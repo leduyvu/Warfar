@@ -46,15 +46,53 @@ public:
     
     virtual void ccTouchesBegan(CCSet* touches, CCEvent* event);
     virtual void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
+    void impactHandler();
+    
+    //joystick
+    float heronsformula(float x1,float y1,float x2,float y2,float x3,float y3);
+    bool triangleContainPoint(float x1,float y1,float x2,float y2,float x3,float y3,float px,float py);
+    
     
 private:
-    Player* player;
+    void flying(float dt);
+    
+    cocos2d::CCSprite *joystick;
+    //中心点O
+    cocos2d::CCPoint O;
+    //大圆半径
+    float R;
+    
+    cocos2d::CCSprite *plane;
+    //飞机飞行的速度分量值
+    float speedX;
+    float speedY;
+    //是否飞行的标志
+    bool isFlying;
+    
+    
+    bool isBallSTRun = false;
+    bool isBallNDRun = false;
+    bool isBallST = false;
+    bool isBallND = false;
+    bool playerSTRun = false;
+    bool playerNDRun = false;
+    CCArray* arrBall;
+    Player* playerST, *playerND;
     b2ContactListener* listener;
     b2World* world;
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref
     CCArray* arrFloor;
-    bool isTouch;
-    float timeTouch;
+    bool isTouchST, isTouchND;
+    float timeTouchST;
+    float timeTouchND;
+    
+    //shoot
+    CCSprite* shootButtonST;
+    CCSprite* shootButtonND;
+    bool shootingST = false;
+    bool shootingND = false;
+    bool isShootST = false;
+    bool isShootND = false;
 };
 
 #endif // __HELLO_WORLD_H__

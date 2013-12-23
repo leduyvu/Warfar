@@ -20,16 +20,16 @@ void MyContactListener::BeginContact(b2Contact* contact){
     MyContact myContact = { contact->GetFixtureA(), contact->GetFixtureB() };
     _contacts.push_back(myContact);
     {
-        if(myContact.fixtureA->GetDensity() == 11)
+        if(myContact.fixtureA->GetDensity() == 10)
         {
             resultA = 1;
-            myContact.fixtureA->GetBody()->SetLinearDamping(21);
-            myContact.fixtureA->GetBody()->GetFixtureList()[0].SetSensor(true);
-            myContact.fixtureB->GetBody()->SetLinearDamping(21);
+            myContact.fixtureA->GetBody()->SetLinearDamping(0.2);
+//            myContact.fixtureA->GetBody()->GetFixtureList()[0].SetSensor(true);
             CCLOG("AAAA");
         }
-        if(myContact.fixtureB->GetDensity() == 10 && myContact.fixtureB->GetBody() != NULL)
+        if(myContact.fixtureB->GetDensity() == 3 && myContact.fixtureB->GetBody() != NULL)
         {
+            myContact.fixtureB->GetBody()->SetLinearDamping(0.5);
 //            myContact.fixtureB->GetBody()->SetLinearDamping(21);
             resultB = 1;
             // myContact.fixtureA->GetBody()->GetFixtureList()[0].SetSensor(true);

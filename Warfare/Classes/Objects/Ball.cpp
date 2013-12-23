@@ -27,12 +27,12 @@ void Ball::createBall(b2World * world, string str, CCPoint location)
     dynamicBox.m_radius = 0.3f;
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &dynamicBox;
-    fixtureDef1.density = 0.5f;
+    fixtureDef1.density = 3;
     fixtureDef1.friction = 0.0f;
     fixtureDef1.restitution = 1;
     body->CreateFixture(&fixtureDef1);
     b2Filter filter;
-    filter.groupIndex = -3;
+    filter.groupIndex = -1;
     body->GetFixtureList()[0].SetFilterData(filter);
     body->SetLinearDamping(0.01);
     this->setPhysicsBody(body);
@@ -44,3 +44,22 @@ void Ball::throwBall(b2Vec2 vectorV){
 CCSprite* Ball::getSprite(){
     return this->sprBall;
 }
+
+//void Ball::BeginContact(b2Contact* contact){
+//    MyContact myContact = { contact->GetFixtureA(), contact->GetFixtureB() };
+//    _contacts.push_back(myContact);
+//    {
+//        if(myContact.fixtureA->GetDensity() == 10)
+//        {
+//            myContact.fixtureA->GetBody()->GetFixtureList()[0].SetSensor(true);
+//            myContact.fixtureA->GetBody()->SetLinearDamping(2222);
+//            CCLOG("AAAA");
+//        }
+//        if(myContact.fixtureB->GetDensity() == 3){
+//            myContact.fixtureB->GetBody()->ResetMassData();
+//            myContact.fixtureB->GetBody()->GetFixtureList()[0].SetSensor(true);
+//            myContact.fixtureB->GetBody()->SetLinearDamping(2225);
+//            CCLOG("AAAA");
+//        }
+//    }
+//}

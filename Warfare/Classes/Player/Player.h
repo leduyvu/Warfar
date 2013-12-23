@@ -28,6 +28,7 @@ public:
     int getHeart();
 private:
     int heart = 100;
-    CCSprite* sprPlayer;    
+    CCSprite* sprPlayer;
+    
 };
 #endif /* defined(__GunnyGame__Player__) */
